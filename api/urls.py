@@ -1,10 +1,8 @@
-from django.urls import path
-from .views.books_view import BookListApiView
+from django.urls import path, include
 
-books_url = [
-    path('', BookListApiView.as_view()),
+
+urlpatterns = [
+    path('schema/', include('api.routes.swagger')),
+    path('auth/', include('api.routes.auth')),
+    path('', include('api.routes.book'))
 ]
-
-urlpatterns = []
-
-urlpatterns += books_url
