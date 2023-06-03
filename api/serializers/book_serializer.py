@@ -11,9 +11,16 @@ class BooksSerializer(serializers.ModelSerializer):
     genre = GenresSerializer()
     average_rating = serializers.SerializerMethodField()
     detail_url = serializers.HyperlinkedIdentityField(view_name='book-detail', lookup_field='id')
+    is_favorite = serializers.SerializerMethodField()
 
     def get_average_rating(self, obj):
         return obj.average_rating()
+
+    def get_is_favorite(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return obj.book_favorites.filter(user=user).exists()
+        return False
 
     class Meta:
         model = Book
