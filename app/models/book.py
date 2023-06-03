@@ -12,8 +12,8 @@ class Book(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.PROTECT, related_name='genre_books', verbose_name='Жанр')
 
     def average_rating(self):
-        average_rating = self.book_ratings.aggregate(avg_rating=Avg('rating')).get('avg_rating')
-        return None if average_rating is None else average_rating
+        average_rating = self.book_reviews.aggregate(avg_rating=Avg('rating')).get('avg_rating')
+        return average_rating or None
 
     def get_reviews(self):
         return self.book_reviews.all()

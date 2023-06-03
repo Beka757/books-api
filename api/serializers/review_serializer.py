@@ -5,13 +5,13 @@ from api.serializers.user_serializer import UserSerializer
 
 class ReviewSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    rating = serializers.SerializerMethodField()
-
-    def get_rating(self, review):
-        if review.rating:
-            return review.rating.rating
-        return None
 
     class Meta:
         model = Review
         fields = ['user', 'rating', 'text']
+
+
+class ReviewCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
