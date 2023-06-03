@@ -17,3 +17,6 @@ class Book(models.Model):
 
     def get_reviews(self):
         return self.book_reviews.all()
+
+    def __str__(self):
+        return self.title

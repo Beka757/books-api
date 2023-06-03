@@ -1,0 +1,167 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$VlgWdVglEE1KkjRxS0SLoq$jkZiv+ou7WjJpplZSU2p6X64bC7EAPTLhMNw8FlcuGc=",
+    "last_login": null,
+    "email": "user@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "date_joined": "2023-06-03T07:47:59.470Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$Kf5GKgEug4LwQ6x3yINX9c$KUbhp6a59qNYs+TBZsiOt2Ss0gYWZhJVzo97Thuz8zo=",
+    "last_login": "2023-06-03T11:49:27.888Z",
+    "email": "admin@admin.com",
+    "is_staff": true,
+    "is_active": true,
+    "is_superuser": true,
+    "date_joined": "2023-06-03T11:47:34.251Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "app.genre",
+  "pk": 1,
+  "fields": {
+    "name": "genre1"
+  }
+},
+{
+  "model": "app.genre",
+  "pk": 2,
+  "fields": {
+    "name": "genre2"
+  }
+},
+{
+  "model": "app.genre",
+  "pk": 3,
+  "fields": {
+    "name": "genre3"
+  }
+},
+{
+  "model": "app.author",
+  "pk": 1,
+  "fields": {
+    "name": "author1"
+  }
+},
+{
+  "model": "app.author",
+  "pk": 2,
+  "fields": {
+    "name": "author2"
+  }
+},
+{
+  "model": "app.author",
+  "pk": 3,
+  "fields": {
+    "name": "author3"
+  }
+},
+{
+  "model": "app.book",
+  "pk": 1,
+  "fields": {
+    "title": "title1",
+    "description": "description1",
+    "publication_date": "2023-06-01",
+    "author": 1,
+    "genre": 1
+  }
+},
+{
+  "model": "app.book",
+  "pk": 2,
+  "fields": {
+    "title": "title2",
+    "description": "description2",
+    "publication_date": "2023-06-02",
+    "author": 2,
+    "genre": 2
+  }
+},
+{
+  "model": "app.book",
+  "pk": 3,
+  "fields": {
+    "title": "title3",
+    "description": "description3",
+    "publication_date": "2023-06-03",
+    "author": 3,
+    "genre": 3
+  }
+},
+{
+  "model": "app.book",
+  "pk": 4,
+  "fields": {
+    "title": "title4",
+    "description": "description4",
+    "publication_date": "2023-06-02",
+    "author": 1,
+    "genre": 3
+  }
+},
+{
+  "model": "app.book",
+  "pk": 5,
+  "fields": {
+    "title": "title5",
+    "description": "description5",
+    "publication_date": "2023-06-03",
+    "author": 2,
+    "genre": 1
+  }
+},
+{
+  "model": "app.review",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "book": 2,
+    "text": "review1",
+    "rating": 2
+  }
+},
+{
+  "model": "app.review",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "book": 2,
+    "text": "review2",
+    "rating": 1
+  }
+},
+{
+  "model": "app.review",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "book": 1,
+    "text": "review3",
+    "rating": 5
+  }
+},
+{
+  "model": "app.favorite",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "book": 1
+  }
+}
+]
