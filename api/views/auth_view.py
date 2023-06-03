@@ -4,10 +4,8 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from api.serializers.user_serializer import (
-    UserSerializer, UserRegistrationSerializer,
-    UserLoginSerializer
-)
+from api.serializers.user_serializer import (UserRegistrationSerializer, UserLoginSerializer)
+
 
 UserModel = get_user_model()
 
@@ -35,8 +33,6 @@ class UserLoginAPIView(GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
-        serializer = UserSerializer(user)
         token = RefreshToken.for_user(user)
-        data = serializer.data
-        data['tokens'] = {'refresh': str(token), 'access': str(token.access_token)}
-        return Response(data, status=status.HTTP_200_OK)
+        tokens = {'refresh': str(token), 'access': str(token.access_token)}
+        return Response(tokens, status=status.HTTP_200_OK)

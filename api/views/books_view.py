@@ -1,10 +1,12 @@
 from rest_framework.generics import ListAPIView
 from api.serializers.book_serializer import BooksSerializer
-from app.models.book import Book
 from api.services.book_services import BookService
+from django_filters.rest_framework import DjangoFilterBackend
+from api.serializers.book_serializer import BookFilter
 
 
 class BookListApiView(ListAPIView):
-    model = Book
     serializer_class = BooksSerializer
     queryset = BookService.get_books()
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = BookFilter
