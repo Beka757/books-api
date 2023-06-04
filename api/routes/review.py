@@ -3,5 +3,5 @@ from api.views.reviews_view import ReviewCreateApiView
 
 
 urlpatterns = [
-    path('create/', ReviewCreateApiView.as_view(), name='review-create'),
+    path('reviews/create/', ReviewCreateApiView.as_view(), name='review-create'),
 ]

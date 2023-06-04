@@ -1,0 +1,56 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: books_api
+    container_name: books_api
+    restart: always
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    ports:
+      - "8000:8000"
+    volumes:
+      - static_volume:/webapp/static
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  db:
+    container_name: postgres
+    image: postgres:14-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    networks:
+      - mynetwork
+
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    volumes:
+      - static_volume:/webapp/static
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes:
+  postgres_data:
+  static_volume:

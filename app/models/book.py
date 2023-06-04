@@ -13,7 +13,9 @@ class Book(models.Model):
 
     def average_rating(self):
         average_rating = self.book_reviews.aggregate(avg_rating=Avg('rating')).get('avg_rating')
-        return average_rating or None
+        if average_rating is not None:
+            average_rating = round(average_rating, 1)
+        return average_rating
 
     def get_reviews(self):
         return self.book_reviews.all()

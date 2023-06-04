@@ -3,5 +3,5 @@ from api.views.favorite_view import BooksFavoriteView
 
 
 urlpatterns = [
-    path('create/', BooksFavoriteView.as_view(), name='favorite'),
+    path('favorite/', BooksFavoriteView.as_view(), name='favorite'),
 ]

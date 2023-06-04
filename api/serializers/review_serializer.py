@@ -12,6 +12,9 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class ReviewCreateSerializer(serializers.ModelSerializer):
+    book = serializers.IntegerField(write_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = ['book', 'user', 'text', 'rating']

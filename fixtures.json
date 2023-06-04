@@ -157,11 +157,39 @@
   }
 },
 {
+  "model": "app.review",
+  "pk": 4,
+  "fields": {
+    "user": 1,
+    "book": 1,
+    "text": "string",
+    "rating": 5
+  }
+},
+{
+  "model": "app.review",
+  "pk": 5,
+  "fields": {
+    "user": 1,
+    "book": 2,
+    "text": "string",
+    "rating": 5
+  }
+},
+{
   "model": "app.favorite",
-  "pk": 1,
+  "pk": 17,
   "fields": {
     "user": 1,
     "book": 1
+  }
+},
+{
+  "model": "app.favorite",
+  "pk": 18,
+  "fields": {
+    "user": 1,
+    "book": 2
   }
 }
 ]
